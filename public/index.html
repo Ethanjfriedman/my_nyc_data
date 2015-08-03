@@ -1,0 +1,165 @@
+<html>
+<head>
+<title>Visualizing the </title>
+<style>
+    body {
+        padding: 1em;
+    }
+    #buttons, #keys, #pie {
+        display: inline-block;
+        vertical-align: top;
+    }
+    button {
+        display: block;
+        margin: 1.5em;
+    }
+    #keys {
+        border: 1px solid lightgrey;
+        padding: 1em;
+    }
+    .key-color {
+        float:right;
+        background-color: white;
+        padding: 10px;
+    }
+    .key-text {
+        padding: 10px;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <h1>Complaints and Allegations Against Police</h1>
+    </header>
+    <div id="graph">
+        <div id="info">
+            <div id="keys">
+                <p>
+                    <span class="key-text" id="force">Force</span>
+                    <span class="key-color"></span>
+                </p>
+                <p>
+                    <span class="key-text" id="authority">Authority</span>
+                    <span class="key-color"></span>
+                </p>
+                <p>
+                    <span class="key-text" id="discourtesy">Discourtesy</span>
+                    <span class="key-color"></span>
+                </p>
+                <p>
+                    <span class="key-text" id="language">Language</span>
+                    <span class="key-color"></span>
+                </p>
+            </div>
+            <div id="buttons">
+                <button id="2005">2005</button>
+                <button id="2006">2006</button>
+                <button id="2007">2007</button>
+                <button id="2008">2008</button>
+                <button id="2009">2009</button>
+            </div>
+            <div id="pie">
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+
+    <script>
+    // set up static variables
+    // the dimensions of the visualization
+    var width = 500,
+        height = 500,
+        padding = 100;
+
+    // set up d3 variables
+    var pieChart = d3.layout.pie().sort(null),
+      color = d3.scale.category10(),
+      arc = d3.svg.arc();
+
+    d3.json("allegations-complaints.json", function(error, data) {
+      var force = data.data[0],
+          authority = data.data[1],
+          discourtesy = data.data[2],
+          language = data.data[3],
+          allegation = data.data[4],
+          complaints = data.data[5];
+
+      var pieCharts = [],
+          totals = [];
+
+      var createCharts = function() {
+        for (var i = 9; i < 19; i += 2) {  //use debugger to inspect data.data to see explanation of this weirdness
+          var chart = pieChart([
+            force[i],
+            authority[i],
+            discourtesy[i],
+            language[i]
+          ]);
+          pieCharts.push(chart);
+          totals.push( (allegation[i] + complaints[i]) / 1000000);
+        }
+      }
+      createCharts();
+      debugger;
+      arc.outerRadius(205);
+
+      var cy = height / 2 + padding,
+          cx = width / 2 + padding;
+
+      d3.select("#pie")
+        .append("svg")
+        .attr("width", width + padding * 2)
+        .attr("height", height + padding * 2);
+
+      d3.select("svg")
+        .append("g")
+        .attr("transform", "translate(" + cx + "," + cy + ")")
+        .selectAll("path")
+        .data(pieCharts[0])
+        .enter()
+        .append("path")
+        .attr("fill", function(d, i){ return color(i); })
+        .attr("stroke", "white")
+        .attr("stroke-width", "2px")
+        .each(function(d) {
+          this._current = JSON.parse(JSON.stringify(d));
+          this._current.endAngle = this._current.startAngle;
+        })
+        .transition().duration(1000).attrTween("d", makeArcTween(totals[0]));
+
+      // Store the currently displayed angles
+      //Then, interpolate from this._current to the new angles
+
+      function makeArcTween(val){
+        return function(a) {
+          var i = d3.interpolate(this._current, a)
+          var k = d3.interpolate(arc.outerRadius()(), val);
+          this._current = i(0);
+          return function(t) {
+            return arc.outerRadius(k(t))(i(t));
+        }
+      }
+    }
+
+      d3.selectAll(".key-color")
+        .transition().duration(1000)
+        .style("background-color", function(d, i) { return color(i) });
+
+
+      var $buttons = $('button');
+
+      $.each($buttons, function(i, val) {
+        $(val).click(function() {
+          d3.selectAll("path")
+          .data(pieCharts[i])
+          .transition().duration(1000).attrTween("d", makeArcTween(totals[i]))
+        });
+      });
+    });
+
+
+    </script>
+</body>
+</html>

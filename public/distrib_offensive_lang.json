@@ -1,0 +1,623 @@
+{
+  "meta" : {
+    "view" : {
+      "id" : "us5j-esyf",
+      "name" : "Distribution Of Offensive Language Allegations 2005 - 2009",
+      "attribution" : "Civilian Complaint Review Board (CCRB)",
+      "averageRating" : 0,
+      "category" : "Public Safety",
+      "createdAt" : 1317312672,
+      "description" : "CCRB: Distribution of Offensive Language Allegations 2005 - 2009",
+      "displayType" : "table",
+      "downloadCount" : 132,
+      "indexUpdatedAt" : 1414260072,
+      "newBackend" : false,
+      "numberOfComments" : 0,
+      "oid" : 336819,
+      "publicationAppendEnabled" : false,
+      "publicationDate" : 1317312741,
+      "publicationGroup" : 241955,
+      "publicationStage" : "published",
+      "rowClass" : "",
+      "rowsUpdatedAt" : 1317312674,
+      "rowsUpdatedBy" : "txun-eb7e",
+      "tableId" : 241955,
+      "totalTimesRated" : 0,
+      "viewCount" : 85,
+      "viewLastModified" : 1409940600,
+      "viewType" : "tabular",
+      "columns" : [ {
+        "id" : -1,
+        "name" : "sid",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":sid",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : {
+        }
+      }, {
+        "id" : -1,
+        "name" : "id",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":id",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : {
+        }
+      }, {
+        "id" : -1,
+        "name" : "position",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":position",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : {
+        }
+      }, {
+        "id" : -1,
+        "name" : "created_at",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":created_at",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : {
+        }
+      }, {
+        "id" : -1,
+        "name" : "created_meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":created_meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : {
+        }
+      }, {
+        "id" : -1,
+        "name" : "updated_at",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":updated_at",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : {
+        }
+      }, {
+        "id" : -1,
+        "name" : "updated_meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":updated_meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : {
+        }
+      }, {
+        "id" : -1,
+        "name" : "meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : {
+        }
+      }, {
+        "id" : 2896659,
+        "name" : "Type of Offensive Language Allegation",
+        "dataTypeName" : "text",
+        "fieldName" : "type_of_offensive_language_allegation",
+        "position" : 2,
+        "renderTypeName" : "text",
+        "tableColumnId" : 1537276,
+        "width" : 544,
+        "cachedContents" : {
+          "non_null" : 8,
+          "smallest" : "Ethnicity",
+          "null" : 0,
+          "largest" : "Total",
+          "top" : [ {
+            "count" : 1,
+            "item" : "Sex"
+          }, {
+            "count" : 1,
+            "item" : "Race"
+          }, {
+            "count" : 1,
+            "item" : "Religion"
+          }, {
+            "count" : 1,
+            "item" : "Physical disability"
+          }, {
+            "count" : 1,
+            "item" : "Ethnicity"
+          }, {
+            "count" : 1,
+            "item" : "Sexual orientation"
+          }, {
+            "count" : 1,
+            "item" : "Total"
+          }, {
+            "count" : 1,
+            "item" : "Other"
+          } ]
+        },
+        "format" : {
+        }
+      }, {
+        "id" : 2896660,
+        "name" : "2005 Number",
+        "dataTypeName" : "number",
+        "fieldName" : "_number_1",
+        "position" : 3,
+        "renderTypeName" : "number",
+        "tableColumnId" : 1537277,
+        "width" : 232,
+        "cachedContents" : {
+          "non_null" : 8,
+          "smallest" : "6",
+          "sum" : "1088",
+          "null" : 0,
+          "average" : "136",
+          "largest" : "544",
+          "top" : [ {
+            "count" : 2,
+            "item" : "21"
+          }, {
+            "count" : 1,
+            "item" : "11"
+          }, {
+            "count" : 1,
+            "item" : "102"
+          }, {
+            "count" : 1,
+            "item" : "328"
+          }, {
+            "count" : 1,
+            "item" : "6"
+          }, {
+            "count" : 1,
+            "item" : "544"
+          }, {
+            "count" : 1,
+            "item" : "55"
+          } ]
+        },
+        "format" : {
+        }
+      }, {
+        "id" : 2896661,
+        "name" : "2005 Percent of Total",
+        "dataTypeName" : "percent",
+        "fieldName" : "_percent_of_total_1",
+        "position" : 4,
+        "renderTypeName" : "percent",
+        "tableColumnId" : 1537278,
+        "width" : 352,
+        "cachedContents" : {
+          "non_null" : 8,
+          "smallest" : "1.10",
+          "sum" : "200.10",
+          "null" : 0,
+          "average" : "25.0125",
+          "largest" : "100.00",
+          "top" : [ {
+            "count" : 2,
+            "item" : "3.90"
+          }, {
+            "count" : 1,
+            "item" : "100.00"
+          }, {
+            "count" : 1,
+            "item" : "60.30"
+          }, {
+            "count" : 1,
+            "item" : "1.10"
+          }, {
+            "count" : 1,
+            "item" : "2.00"
+          }, {
+            "count" : 1,
+            "item" : "18.80"
+          }, {
+            "count" : 1,
+            "item" : "10.10"
+          } ]
+        },
+        "format" : {
+        }
+      }, {
+        "id" : 2896662,
+        "name" : "2006 Number",
+        "dataTypeName" : "number",
+        "fieldName" : "_number_2",
+        "position" : 5,
+        "renderTypeName" : "number",
+        "tableColumnId" : 1537279,
+        "width" : 232,
+        "cachedContents" : {
+          "non_null" : 8,
+          "smallest" : "6",
+          "sum" : "1260",
+          "null" : 0,
+          "average" : "157.5",
+          "largest" : "630",
+          "top" : [ {
+            "count" : 2,
+            "item" : "6"
+          }, {
+            "count" : 1,
+            "item" : "630"
+          }, {
+            "count" : 1,
+            "item" : "393"
+          }, {
+            "count" : 1,
+            "item" : "29"
+          }, {
+            "count" : 1,
+            "item" : "115"
+          }, {
+            "count" : 1,
+            "item" : "24"
+          }, {
+            "count" : 1,
+            "item" : "57"
+          } ]
+        },
+        "format" : {
+        }
+      }, {
+        "id" : 2896663,
+        "name" : "2006 Percent of Total",
+        "dataTypeName" : "percent",
+        "fieldName" : "_percent_of_total_2",
+        "position" : 6,
+        "renderTypeName" : "percent",
+        "tableColumnId" : 1537280,
+        "width" : 352,
+        "cachedContents" : {
+          "non_null" : 8,
+          "smallest" : "1.00",
+          "sum" : "200.10",
+          "null" : 0,
+          "average" : "25.0125",
+          "largest" : "100.00",
+          "top" : [ {
+            "count" : 2,
+            "item" : "1.00"
+          }, {
+            "count" : 1,
+            "item" : "62.40"
+          }, {
+            "count" : 1,
+            "item" : "100.00"
+          }, {
+            "count" : 1,
+            "item" : "3.80"
+          }, {
+            "count" : 1,
+            "item" : "18.30"
+          }, {
+            "count" : 1,
+            "item" : "4.60"
+          }, {
+            "count" : 1,
+            "item" : "9.00"
+          } ]
+        },
+        "format" : {
+        }
+      }, {
+        "id" : 2896664,
+        "name" : "2007 Number",
+        "dataTypeName" : "number",
+        "fieldName" : "_number_3",
+        "position" : 7,
+        "renderTypeName" : "number",
+        "tableColumnId" : 1537281,
+        "width" : 232,
+        "cachedContents" : {
+          "non_null" : 8,
+          "smallest" : "6",
+          "sum" : "1316",
+          "null" : 0,
+          "average" : "164.5",
+          "largest" : "658",
+          "top" : [ {
+            "count" : 1,
+            "item" : "9"
+          }, {
+            "count" : 1,
+            "item" : "59"
+          }, {
+            "count" : 1,
+            "item" : "32"
+          }, {
+            "count" : 1,
+            "item" : "102"
+          }, {
+            "count" : 1,
+            "item" : "6"
+          }, {
+            "count" : 1,
+            "item" : "62"
+          }, {
+            "count" : 1,
+            "item" : "658"
+          }, {
+            "count" : 1,
+            "item" : "388"
+          } ]
+        },
+        "format" : {
+        }
+      }, {
+        "id" : 2896665,
+        "name" : "2007 Percent of Total",
+        "dataTypeName" : "percent",
+        "fieldName" : "_percent_of_total_3",
+        "position" : 8,
+        "renderTypeName" : "percent",
+        "tableColumnId" : 1537282,
+        "width" : 352,
+        "cachedContents" : {
+          "non_null" : 8,
+          "smallest" : "0.90",
+          "sum" : "200.10",
+          "null" : 0,
+          "average" : "25.0125",
+          "largest" : "100.00",
+          "top" : [ {
+            "count" : 1,
+            "item" : "59.00"
+          }, {
+            "count" : 1,
+            "item" : "100.00"
+          }, {
+            "count" : 1,
+            "item" : "0.90"
+          }, {
+            "count" : 1,
+            "item" : "1.40"
+          }, {
+            "count" : 1,
+            "item" : "15.50"
+          }, {
+            "count" : 1,
+            "item" : "9.40"
+          }, {
+            "count" : 1,
+            "item" : "4.90"
+          }, {
+            "count" : 1,
+            "item" : "9.00"
+          } ]
+        },
+        "format" : {
+        }
+      }, {
+        "id" : 2896666,
+        "name" : "2008 Number",
+        "dataTypeName" : "number",
+        "fieldName" : "_number_4",
+        "position" : 9,
+        "renderTypeName" : "number",
+        "tableColumnId" : 1537283,
+        "width" : 232,
+        "cachedContents" : {
+          "non_null" : 8,
+          "smallest" : "8",
+          "sum" : "1292",
+          "null" : 0,
+          "average" : "161.5",
+          "largest" : "646",
+          "top" : [ {
+            "count" : 1,
+            "item" : "646"
+          }, {
+            "count" : 1,
+            "item" : "61"
+          }, {
+            "count" : 1,
+            "item" : "345"
+          }, {
+            "count" : 1,
+            "item" : "15"
+          }, {
+            "count" : 1,
+            "item" : "8"
+          }, {
+            "count" : 1,
+            "item" : "108"
+          }, {
+            "count" : 1,
+            "item" : "95"
+          }, {
+            "count" : 1,
+            "item" : "14"
+          } ]
+        },
+        "format" : {
+        }
+      }, {
+        "id" : 2896667,
+        "name" : "2008 Percent of Total",
+        "dataTypeName" : "percent",
+        "fieldName" : "_percent_of_total_4",
+        "position" : 10,
+        "renderTypeName" : "percent",
+        "tableColumnId" : 1537284,
+        "width" : 352,
+        "cachedContents" : {
+          "non_null" : 8,
+          "smallest" : "1.20",
+          "sum" : "199.90",
+          "null" : 0,
+          "average" : "24.9875",
+          "largest" : "100.00",
+          "top" : [ {
+            "count" : 1,
+            "item" : "100.00"
+          }, {
+            "count" : 1,
+            "item" : "2.20"
+          }, {
+            "count" : 1,
+            "item" : "53.40"
+          }, {
+            "count" : 1,
+            "item" : "1.20"
+          }, {
+            "count" : 1,
+            "item" : "14.70"
+          }, {
+            "count" : 1,
+            "item" : "9.40"
+          }, {
+            "count" : 1,
+            "item" : "16.70"
+          }, {
+            "count" : 1,
+            "item" : "2.30"
+          } ]
+        },
+        "format" : {
+        }
+      }, {
+        "id" : 2896668,
+        "name" : "2009 Number",
+        "dataTypeName" : "number",
+        "fieldName" : "_number_5",
+        "position" : 11,
+        "renderTypeName" : "number",
+        "tableColumnId" : 1537285,
+        "width" : 232,
+        "cachedContents" : {
+          "non_null" : 8,
+          "smallest" : "7",
+          "sum" : "1366",
+          "null" : 0,
+          "average" : "170.75",
+          "largest" : "683",
+          "top" : [ {
+            "count" : 1,
+            "item" : "13"
+          }, {
+            "count" : 1,
+            "item" : "22"
+          }, {
+            "count" : 1,
+            "item" : "369"
+          }, {
+            "count" : 1,
+            "item" : "97"
+          }, {
+            "count" : 1,
+            "item" : "92"
+          }, {
+            "count" : 1,
+            "item" : "683"
+          }, {
+            "count" : 1,
+            "item" : "83"
+          }, {
+            "count" : 1,
+            "item" : "7"
+          } ]
+        },
+        "format" : {
+        }
+      }, {
+        "id" : 2896669,
+        "name" : "2009 Percent of Total",
+        "dataTypeName" : "percent",
+        "fieldName" : "_percent_of_total_5",
+        "position" : 12,
+        "renderTypeName" : "percent",
+        "tableColumnId" : 1537286,
+        "width" : 352,
+        "cachedContents" : {
+          "non_null" : 8,
+          "smallest" : "1.00",
+          "sum" : "200.00",
+          "null" : 0,
+          "average" : "25.00",
+          "largest" : "100.00",
+          "top" : [ {
+            "count" : 1,
+            "item" : "54.00"
+          }, {
+            "count" : 1,
+            "item" : "100.00"
+          }, {
+            "count" : 1,
+            "item" : "3.20"
+          }, {
+            "count" : 1,
+            "item" : "1.00"
+          }, {
+            "count" : 1,
+            "item" : "12.20"
+          }, {
+            "count" : 1,
+            "item" : "13.50"
+          }, {
+            "count" : 1,
+            "item" : "1.90"
+          }, {
+            "count" : 1,
+            "item" : "14.20"
+          } ]
+        },
+        "format" : {
+        }
+      } ],
+      "grants" : [ {
+        "inherited" : false,
+        "type" : "viewer",
+        "flags" : [ "public" ]
+      } ],
+      "metadata" : {
+        "custom_fields" : {
+          "Dataset Information" : {
+            "Agency" : "Civilian Complaint Review Board (CCRB)"
+          }
+        },
+        "renderTypeConfig" : {
+          "visible" : {
+            "table" : true
+          }
+        },
+        "availableDisplayTypes" : [ "table", "fatrow", "page" ],
+        "rdfSubject" : "0",
+        "rowIdentifier" : "0",
+        "rdfClass" : ""
+      },
+      "owner" : {
+        "id" : "5fuc-pqz2",
+        "displayName" : "NYC OpenData",
+        "roleName" : "administrator",
+        "screenName" : "NYC OpenData",
+        "rights" : [ "create_datasets", "edit_others_datasets", "edit_sdp", "edit_site_theme", "moderate_comments", "manage_users", "chown_datasets", "edit_nominations", "approve_nominations", "feature_items", "federations", "manage_stories", "manage_approval", "change_configurations", "view_domain", "view_others_datasets", "edit_pages", "create_pages", "short_session", "view_goals", "view_dashboards", "edit_goals", "edit_dashboards", "create_dashboards" ]
+      },
+      "query" : {
+      },
+      "rights" : [ "read" ],
+      "tableAuthor" : {
+        "id" : "5fuc-pqz2",
+        "displayName" : "NYC OpenData",
+        "roleName" : "administrator",
+        "screenName" : "NYC OpenData",
+        "rights" : [ "create_datasets", "edit_others_datasets", "edit_sdp", "edit_site_theme", "moderate_comments", "manage_users", "chown_datasets", "edit_nominations", "approve_nominations", "feature_items", "federations", "manage_stories", "manage_approval", "change_configurations", "view_domain", "view_others_datasets", "edit_pages", "create_pages", "short_session", "view_goals", "view_dashboards", "edit_goals", "edit_dashboards", "create_dashboards" ]
+      },
+      "tags" : [ "complaint", "civilian", "review", "board", "activity", "ccrb", "civilian complaint review board", "2005", "2006", "2007", "2008", "2009", "complaint activity", "statistics", "disciplinary recommendation", "allegation", "misconduct" ],
+      "flags" : [ "default" ]
+    }
+  },
+  "data" : [ [ 1, "6B627D0C-232C-43F3-86F4-849D178454B8", 1, 1317312674, "392904", 1317312674, "392904", "{\n}", "Race", "328", "60.30", "393", "62.40", "388", "59.00", "345", "53.40", "369", "54.00" ]
+, [ 2, "0C3AAFF4-69F1-4D2F-B622-DB0584A43BD5", 2, 1317312674, "392904", 1317312674, "392904", "{\n}", "Ethnicity", "102", "18.80", "115", "18.30", "102", "15.50", "108", "16.70", "97", "14.20" ]
+, [ 3, "BD2EE32E-54FF-4404-BE8B-18D3BECAE5C8", 3, 1317312674, "392904", 1317312674, "392904", "{\n}", "Religion", "21", "3.90", "29", "4.60", "32", "4.90", "14", "2.20", "13", "1.90" ]
+, [ 4, "5904E2D7-BFA5-4A13-BE10-B670A2646502", 4, 1317312674, "392904", 1317312674, "392904", "{\n}", "Sex", "21", "3.90", "24", "3.80", "59", "9.00", "95", "14.70", "92", "13.50" ]
+, [ 5, "4FEF8A58-6600-4497-B060-F4F8E060BDEE", 5, 1317312674, "392904", 1317312674, "392904", "{\n}", "Sexual orientation", "6", "1.10", "6", "1.00", "6", "0.90", "8", "1.20", "7", "1.00" ]
+, [ 6, "C154603A-C56E-4388-B0F5-60EFC4107E35", 6, 1317312674, "392904", 1317312674, "392904", "{\n}", "Physical disability", "55", "10.10", "57", "9.00", "62", "9.40", "61", "9.40", "83", "12.20" ]
+, [ 7, "81AEB058-41C7-4146-AC62-D70AE8FA1E91", 7, 1317312674, "392904", 1317312674, "392904", "{\n}", "Other", "11", "2.00", "6", "1.00", "9", "1.40", "15", "2.30", "22", "3.20" ]
+, [ 8, "2CEE903A-854A-4063-8288-271EFE09B082", 8, 1317312674, "392904", 1317312674, "392904", "{\n}", "Total", "544", "100.00", "630", "100.00", "658", "100.00", "646", "100.00", "683", "100.00" ]
+ ]
+}

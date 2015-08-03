@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<head>
+ <style>
+
+ body {
+   padding: 50px;
+ }
+
+ .axis {
+   font: 10px sans-serif;
+ }
+
+ .axis path,
+ .axis line {
+   fill: none;
+   stroke: #000;
+   shape-rendering: crispEdges;
+ }
+
+ </style>
+</head>
+
+<body>
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script type="text/javascript">
+
+// Graph dimensions
+var width = 1000,
+    height = 500,
+    padding = 50;
+
+var x = d3.scale.ordinal().rangeRoundBands([0, width], [0.09]);
+var y = d3.scale.linear().range([height, 0]);
+
+var xAxis = d3.svg.axis()
+  .scale(x)
+  .orient("bottom")
+  .tickFormat(d3.time.format("%Y-%m"));
+
+var yAxis = d3.svg.axis()
+  .scale(y)
+  .orient("left")
+  .ticks(10);
+
+//Append our SVG to the HTML body
+var svg = d3.select("body").append("svg")
+  .attr("width", width + padding * 2)
+  .attr("height", height + padding * 2)
+  .append("g")
+  .attr("transform", "translate(" + padding + "," + padding + ")");
+
+// Parse the date / time
+var parseDate = d3.time.format("%Y-%m").parse;
+
+d3.csv("bar-data.csv", function(error, data) {
+  data.forEach(function(d) {
+    d.date = parseDate(d.date);
+  });
+
+  // Loading data
+  x.domain(data.map(function(d) { return d.date; }));
+  y.domain([0,d3.max(data, function(d) { return d.value; })]);
+
+  svg.selectAll("thisdoesnotmatter")
+    .data(data)
+    .enter()
+    .append("rect")
+    .style("fill", "blue")
+    .attr("x", function(d) { return x(d.date); })
+    .attr("width", x.rangeBand())
+    .attr("y", function(d) { return y(d.value); })
+    .attr("height", function(d) { return height - y(d.value); })
+
+  svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0, " + height + ")")
+    .call(xAxis)   //calls the xAxis var we made up above
+    .selectAll("text")
+    .style("text-anchor", "end")
+    .attr("x", -25)
+    .attr("transform", "rotate(-60)");
+
+  svg.append("g")
+    .attr("class", "y axis")
+    .call(yAxis)
+    .selectAll("text");
+});
+
+
+
+
+</script>
+</body>
