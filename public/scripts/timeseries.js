@@ -32,21 +32,23 @@ d3.json("firearms_discharge.json", function(error, data) {
   if (error) throw error;
   var dates = ["2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012"];
   var adversarialConflict = [];
-  for (var i = 9; i <= 19; i++) {
-    var dataPoint={};
-    dataPoint.date = dates[i-9];
-    dataPoint.value = data.data[0][i];
-    dataPoint.value = +dataPoint.value;
-    adversarialConflict.push(dataPoint);
+  var allSeries = [];
+  for (var q = 0; q < data.data.length; q++) {
+    var dataSeries = [];
+    for (var i = 9; i <= 19; i++) {
+      var dataPoint={};
+      dataPoint.date = parseDate(dates[i - 9]);
+      dataPoint.value = data.data[q][i];
+      dataPoint.value = +dataPoint.value;
+      dataSeries.push(dataPoint);
+    }
+    allSeries.push(dataSeries);
   }
+  debugger;
 
-  // data.forEach(function(d) {
-  //   d.date = parseDate(d.date);
-  //   d.value = +d.value;
-  // });
-
-  x.domain(d3.extent(adversarialConflict, function(d) { return d.date; }));
-  y.domain(d3.extent(adversarialConflict, function(d) { return d.value; }));
+    //FIXME
+  x.domain(d3.extent(allSeries[0], function(d) { return d.date; }));
+  y.domain(d3.extent(allSeries[0], function(d) { return d.value; }));
 
   svg.append("g")
       .attr("class", "x axis")
@@ -63,8 +65,11 @@ d3.json("firearms_discharge.json", function(error, data) {
       .style("text-anchor", "end")
       .text("Number of incidents");
 
-  svg.append("path")
-      .datum(adversarialConflict)
-      .attr("class", "line")
-      .attr("d", line);
+    for (var i = 0; i < allSeries.length; i++) {
+
+      svg.append("path")
+        .datum(allSeries[i])
+        .attr("class", "line")
+        .attr("d", line);
+      }
 });
