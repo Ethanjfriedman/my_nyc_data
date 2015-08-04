@@ -10,6 +10,8 @@ var makePieChart = function(dataset) {
 
   d3.json(dataset, function(error, data) {
     console.log(error);
+      //getting rid of total and storing it in a variable;
+    var total = data.data.pop();
     var types = data.data;
 
     //making the title
@@ -18,7 +20,7 @@ var makePieChart = function(dataset) {
 
   // create the legend and append it to the DOM
     var $keys = $('#keys');
-    for (var i = 0; i < types.length; i++) {
+    for (var i = 0; i < types.length-1; i++) {
       var typeName = types[i][8];
       var p = $('<p>');
       var keyText = $('<span>').addClass('key-text').attr('id', typeName).text(typeName);
@@ -35,7 +37,7 @@ var makePieChart = function(dataset) {
       for (var yr = 10; yr < 19; yr += 2) {
         var arr = [];
         var yearlyTotal = [];
-        for (var type = 0; type <= types.length - 3; type++) {
+        for (var type = 0; type <= types.length - 1; type++) {
           arr.push(types[type][yr]);
           yearlyTotal.push(types[type][yr - 1]); // [334, 456, 789, ... 111]
         }
@@ -56,7 +58,7 @@ var makePieChart = function(dataset) {
       .append("svg")
       .attr("width", width + padding * 2)
       .attr("height", height + padding * 2);
-
+  //i want each slice to be associated with it's label. I'm not sure how to do that...
     d3.select("svg")
       .append("g")
       .attr("transform", "translate(" + cx + "," + cy + ")")
@@ -83,8 +85,8 @@ var makePieChart = function(dataset) {
         this._current = i(0);
         return function(t) {
           return arc.outerRadius(k(t))(i(t));
-      }
-    }
+      };
+    };
   }
 
     d3.selectAll(".key-color")
@@ -101,7 +103,7 @@ var makePieChart = function(dataset) {
     var $buttons = $('button');
     //autoplay
     var maxLoops = $buttons.length-1;
-        var counter = -1;
+        var counter = 0;
         var yearz = [2005,2006,2007,2008,2009];
         (function next() {
             if (counter++ >= maxLoops) return;
