@@ -27,8 +27,6 @@ var makePieChart = function(dataset) {
       p.append(keyColor);
       $keys.append(p);
   }
-                    // <button id="2005">2005</button>
-
 
     var pieCharts = [],
         totals = [];
