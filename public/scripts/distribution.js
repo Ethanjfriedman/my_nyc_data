@@ -101,14 +101,35 @@ var makePieChart = function(dataset) {
     }
 
     var $buttons = $('button');
+    //autoplay
+    var maxLoops = $buttons.length-1;
+        var counter = -1;
+        var yearz = [2005,2006,2007,2008,2009];
+        (function next() {
+            if (counter++ >= maxLoops) return;
+
+            setTimeout(function() {
+                $('#year').text(yearz[counter]);
+                console.log(counter);
+                d3.selectAll("path")
+                .data(pieCharts[counter])
+                .transition().duration(1000).attrTween("d", makeArcTween(205));
+
+                if(counter === maxLoops){
+                  counter = -1;
+                }
+                next();
+            }, 5000);
+        })();
+     //end of autoplay
     $.each($buttons, function(i, val) {
       $(val).click(function() {
         d3.selectAll("path")
         .data(pieCharts[i])
-        .transition().duration(1000).attrTween("d", makeArcTween(205))
+        .transition().duration(1000).attrTween("d", makeArcTween(205));
       });
     });
   });
-}
+};
 
 makePieChart("distribution.json");
