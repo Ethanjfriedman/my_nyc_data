@@ -1,44 +1,26 @@
 
                 function InitChart() {
-                    var data = [{
-                        "sale": "202",
-                        "year": "2000"
-                    }, {
-                        "sale": "215",
-                        "year": "2002"
-                    }, {
-                        "sale": "179",
-                        "year": "2004"
-                    }, {
-                        "sale": "199",
-                        "year": "2006"
-                    }, {
-                        "sale": "134",
-                        "year": "2008"
-                    }, {
-                        "sale": "176",
-                        "year": "2010"
-                    }];
-                    var data2 = [{
-                        "sale": "152",
-                        "year": "2000"
-                    }, {
-                        "sale": "189",
-                        "year": "2002"
-                    }, {
-                        "sale": "179",
-                        "year": "2004"
-                    }, {
-                        "sale": "199",
-                        "year": "2006"
-                    }, {
-                        "sale": "134",
-                        "year": "2008"
-                    }, {
-                        "sale": "176",
-                        "year": "2010"
-                    }];
+                 
+d3.json("firearms_discharge.json", function(error, data) {
+    var parseDate = d3.time.format("%Y").parse;
 
+  var dates = ["2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012"];
+  var adversarialConflict = [];
+  var allSeries = [];
+  for (var q = 0; q < data.data.length; q++) {
+    var dataSeries = [];
+    for (var i = 9; i <= 19; i++) {
+      var dataPoint={};
+      dataPoint.date = parseDate(dates[i - 9]);
+      dataPoint.value = data.data[q][i];
+      dataPoint.value = +dataPoint.value;
+      dataSeries.push(dataPoint);
+    }
+    allSeries.push(dataSeries);
+  }
+  debugger;
+   data = allSeries[0];
+   data2 = allSeries[1];
 
 
 
@@ -69,10 +51,10 @@
                         .call(yAxis);
                     var lineGen = d3.svg.line()
                         .x(function(d) {
-                            return xScale(d.year);
+                            return xScale(d.date);
                         })
                         .y(function(d) {
-                            return yScale(d.sale);
+                            return yScale(d.value);
                         })
                         .interpolate("basis");
                     vis.append('svg:path')
@@ -85,6 +67,7 @@
                         .attr('stroke', 'blue')
                         .attr('stroke-width', 2)
                         .attr('fill', 'none');
+                    })
                 }
                 InitChart();
 

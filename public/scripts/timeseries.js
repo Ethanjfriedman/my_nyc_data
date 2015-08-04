@@ -45,7 +45,7 @@ d3.json("firearms_discharge.json", function(error, data) {
     }
     allSeries.push(dataSeries);
   }
-  debugger;
+
 
     //FIXME
   x.domain(d3.extent(allSeries[0], function(d) { return d.date; }));
