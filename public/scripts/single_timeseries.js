@@ -28,10 +28,9 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-<<<<<<< HEAD
 d3.csv("adversarial.csv", function(error, data) {
   if (error) throw error;
-
+  console.log(data);
   data.forEach(function(d) {
     d.date = parseDate(d.date);
     d.value = +d.value;
@@ -40,28 +39,6 @@ d3.csv("adversarial.csv", function(error, data) {
   x.domain(d3.extent(data, function(d) { return d.date; }));
   y.domain(d3.extent(data, function(d) { return d.value; }));
 
-=======
-d3.json("firearms_discharge.json", function(error, data) {
-  if (error) throw error;
-  var dates = ["2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012"];
-  var adversarialConflict = [];
-  for (var i = 9; i <= 19; i++) {
-    var dataPoint={};
-    dataPoint.date = dates[i-9];
-    dataPoint.value = data.data[0][i];
-    dataPoint.value = +dataPoint.value;
-    adversarialConflict.push(dataPoint);
-  }
-
-  // data.forEach(function(d) {
-  //   d.date = parseDate(d.date);
-  //   d.value = +d.value;
-  // });
-
-  x.domain(d3.extent(adversarialConflict, function(d) { return d.date; }));
-  y.domain(d3.extent(adversarialConflict, function(d) { return d.value; }));
-
->>>>>>> 68041a3257760daac931e7bcf3d282176f093f68
   svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
@@ -75,21 +52,10 @@ d3.json("firearms_discharge.json", function(error, data) {
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-<<<<<<< HEAD
-      .text("Price ($)");
+      .text("Number of incidents");
 
   svg.append("path")
       .datum(data)
       .attr("class", "line")
       .attr("d", line);
 });
-
-=======
-      .text("Number of incidents");
-
-  svg.append("path")
-      .datum(adversarialConflict)
-      .attr("class", "line")
-      .attr("d", line);
-});
->>>>>>> 68041a3257760daac931e7bcf3d282176f093f68
