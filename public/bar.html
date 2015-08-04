@@ -54,17 +54,10 @@ var yAxis = d3.svg.axis()
 
 
 function makeBar(){
-  //Append our SVG to the HTML body
-  var svg = d3.select("body").append("svg")
-    .attr("width", width + padding * 2)
-    .attr("height", height + padding * 2)
-    .append("g")
-    .attr("transform", "translate(" + padding + "," + padding + ")");
-
-  // Parse the date / time
 
 
   d3.json("distribution.json", function(error, data) {
+
     //getting rid of total and storing it in a variable;
     var total = data.data.pop();
     console.log(total[11] + 'total');
@@ -82,18 +75,33 @@ function makeBar(){
     
 
  function drawBars(){
+
+    $('svg').remove();
+      //Append our SVG to the HTML body
+  var svg = d3.select("body").append("svg")
+    .attr("width", width + padding * 2)
+    .attr("height", height + padding * 2)
+    .append("g")
+    .attr("transform", "translate(" + padding + "," + padding + ")");
+
+
+
     svg.selectAll("thisdoesnotmatter")
       .data(data.data)
       .enter()
       .append("rect")
-      .transition().duration(1000)
-      .style("fill", "blue")
       .attr("x", function(d) { return x(d[8]); })
       .attr("width", x.rangeBand())
       .attr("y", function(d) { return y(d[year]); })
+      .style('opacity', 0)
+      .transition().delay(function (d,i){ return i * 100;})
+      .duration(300)
+      .style('opacity', 1)
+      .style("fill", "blue")
       .attr("height", function(d) { return height - y(d[year]); })
       .attr('id', function(d){ return d[8]})
       .attr('class', 'bars');
+
 
     svg.append("g")
       .attr("class", "x axis")
