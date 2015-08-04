@@ -130,4 +130,4 @@ var makePieChart = function(dataset) {
   });
 };
 
-makePieChart("distribution.json");
+makePieChart("firearms_discharge.json");

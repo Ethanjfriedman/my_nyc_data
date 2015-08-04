@@ -6,6 +6,7 @@ var express = require('express'),
     ObjectID = require('mongodb').ObjectID,
     url = 'mongodb://localhost:27017/menu',
     methodOverride = require('method-override'),
+    morgan = require('morgan'),
     mongoose = require('mongoose'),
     port = 3000;
     mongoose.connect('mongodb://localhost/menu');
@@ -41,4 +42,3 @@ server.use('/visualization', visualizationController);
 server.get('/',function(req,res){
   res.render('homepage');
 });
-

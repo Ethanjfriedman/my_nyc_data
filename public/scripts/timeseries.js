@@ -1,70 +1,94 @@
-// Set graph dimensions
-var width = 1000,
-    height = 500,
-    padding = 50;
+var margin = {top: 20, right: 20, bottom: 30, left: 50},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
 
-// Set up axes
-var x = d3.scale.ordinal().rangeRoundBands([0, width], [0.09]);
-var y = d3.scale.linear().range([height, 0]);
+var parseDate = d3.time.format("%Y").parse;
+
+var x = d3.time.scale()
+    .range([0, width]);
+
+var y = d3.scale.linear()
+    .range([height, 0]);
 
 var xAxis = d3.svg.axis()
-  .scale(x)
-  .orient("bottom")
-  .tickFormat(d3.time.format("%Y"));
+    .scale(x)
+    .orient("bottom");
 
 var yAxis = d3.svg.axis()
-  .scale(y)
-  .orient("left")
-  .ticks(10);
+    .scale(y)
+    .orient("left");
 
-// Append our SVG to the HTML body
+//HOOOWAH
+var line = d3.svg.line()
+    .x(function(d) { return x(d.date); })
+    .y(function(d) { return y(d.value); });
+
 var svg = d3.select("body").append("svg")
-  .attr("width", width + padding * 2)
-  .attr("height", height + padding * 2)
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
   .append("g")
-  .attr("transform", "translate(" + padding + "," + padding + ")");
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-var timeSeries = d3.json('firearms_discharge.json', function (error, data) {
-  if (error) {
-    console.log("ERROR: " + error);
-  }
+d3.json('firearms_discharge.json', function(error, data) {
+  if (error) throw error;
+  var graphData = [];
+  var dates = [2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012];
 
-  var seriesData = [];
-  var seriesNames = [];
   for (var i = 0; i < data.data.length; i++) {
-    seriesNames.push(data.data[i][8]);
-    for (var j = 9; j <= 19; j++) { //TODO: combine this with the date loop below!
-      seriesData.push(data.data[i][j]);
+    var dataValues = [];
+    for (var j = 9; j <= 19; j++) {
+      dataValues.push(data.data[i][j]);
     }
+    var graphSeries = {
+      date: dates,
+      value: dataValues
+    }
+    graphData.push(graphSeries)
   }
 
-  // Parse the date / time
-  var parseDate = d3.time.format("%Y").parse;
-  var years = [];
-  for (var i = 9; i <= 19; i++) {
-    year = data.meta.view.columns[i].name;
-    year = parseDate(year);
-    years.push(year);
-  }
 
-  x.domain(years); //TODO check this
-  y.domain([0,d3.max(seriesData, function(d) { return d.value; })]);
+  console.log(graphData);
+  debugger;
+});
 
 
-  // Appending the axes to the graph
+
+
+
+
+
+
+d3.csv("adversarial.csv", function(error, data) {
+  if (error) throw error;
+
+  data.forEach(function(d) {
+    d.date = parseDate(d.date);
+    d.value = +d.value;
+  });
+
+  x.domain(d3.extent(data, function(d) { return d.date; }));
+  y.domain(d3.extent(data, function(d) { return d.value; }));
+
   svg.append("g")
-    .attr("class", "x axis")
-    .attr("transform", "translate(0, " + height + ")")
-    .call(xAxis)   //calls the xAxis var I made up above
-    .selectAll("text")
-    .style("text-anchor", "end")
-    .attr("x", -25)
-    .attr("transform", "rotate(-60)");
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
 
   svg.append("g")
-    .attr("class", "y axis")
-    .call(yAxis)
-    .selectAll("text");
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Number of incidents");
+
+  svg.append("path")
+      .datum(data)
+      .attr("class", "line")
+      .attr('stroke', 'green')
+      .attr("d", line);
 
 
 });
