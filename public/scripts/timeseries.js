@@ -49,6 +49,7 @@ d3.json("firearms_discharge.json", function(error, data) {
         maxVal = dataPoint.value
       }
 
+      // if you are reading this please close your eyes when you see the next line of code. thank you.
       dataPoint.series = data.data[q][8].split('\t').join('').split(' ').join('');
 
       dataSeries.push(dataPoint);
