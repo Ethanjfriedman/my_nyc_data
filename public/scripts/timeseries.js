@@ -28,19 +28,6 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-<<<<<<< HEAD
-d3.csv("adversarial.csv", function(error, data) {
-  if (error) throw error;
-
-  data.forEach(function(d) {
-    d.date = parseDate(d.date);
-    d.value = +d.value;
-  });
-
-  x.domain(d3.extent(data, function(d) { return d.date; }));
-  y.domain(d3.extent(data, function(d) { return d.value; }));
-
-=======
 d3.json("firearms_discharge.json", function(error, data) {
   if (error) throw error;
   var dates = ["2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012"];
@@ -63,7 +50,6 @@ d3.json("firearms_discharge.json", function(error, data) {
   x.domain(d3.extent(allSeries[0], function(d) { return d.date; }));
   y.domain(d3.extent(allSeries[0], function(d) { return d.value; }));
 
->>>>>>> 68041a3257760daac931e7bcf3d282176f093f68
   svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
@@ -77,16 +63,6 @@ d3.json("firearms_discharge.json", function(error, data) {
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-<<<<<<< HEAD
-      .text("Price ($)");
-
-  svg.append("path")
-      .datum(data)
-      .attr("class", "line")
-      .attr("d", line);
-});
-
-=======
       .text("Number of incidents");
 
     for (var i = 0; i < allSeries.length; i++) {
@@ -97,4 +73,3 @@ d3.json("firearms_discharge.json", function(error, data) {
         .attr("d", line);
       }
 });
->>>>>>> 68041a3257760daac931e7bcf3d282176f093f68
