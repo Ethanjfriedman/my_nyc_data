@@ -31,8 +31,9 @@ var svg = d3.select("body").append("svg")
 d3.json("firearms_discharge.json", function(error, data) {
   if (error) throw error;
   var dates = ["2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012"];
-  var adversarialConflict = [];
   var allSeries = [];
+  var minVal = data.data[0][9];
+  var maxVal = data.data[0][9];
   for (var q = 0; q < data.data.length; q++) {
     var dataSeries = [];
     for (var i = 9; i <= 19; i++) {
@@ -40,15 +41,23 @@ d3.json("firearms_discharge.json", function(error, data) {
       dataPoint.date = parseDate(dates[i - 9]);
       dataPoint.value = data.data[q][i];
       dataPoint.value = +dataPoint.value;
+      if (dataPoint.value < minVal) {
+        minVal = dataPoint.value;
+      }
+      if (dataPoint.value > maxVal) {
+        maxVal = dataPoint.value
+      }
       dataSeries.push(dataPoint);
     }
     allSeries.push(dataSeries);
   }
-  debugger;
-
+  console.log("min:", minVal);
+  console.log("max:", maxVal);
     //FIXME
+
   x.domain(d3.extent(allSeries[0], function(d) { return d.date; }));
-  y.domain(d3.extent(allSeries[0], function(d) { return d.value; }));
+  y.domain(d3.extent([minVal, maxVal]));
+
 
   svg.append("g")
       .attr("class", "x axis")
