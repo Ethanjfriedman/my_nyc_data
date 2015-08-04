@@ -39,6 +39,7 @@ d3.json("firearms_discharge.json", function(error, data) {
     for (var i = 9; i <= 19; i++) {
       var dataPoint={};
       dataPoint.date = parseDate(dates[i - 9]);
+
       dataPoint.value = data.data[q][i];
       dataPoint.value = +dataPoint.value;
       if (dataPoint.value < minVal) {
@@ -47,13 +48,13 @@ d3.json("firearms_discharge.json", function(error, data) {
       if (dataPoint.value > maxVal) {
         maxVal = dataPoint.value
       }
+
+      dataPoint.series = data.data[q][8].split('\t').join('').split(' ').join('');
+
       dataSeries.push(dataPoint);
     }
     allSeries.push(dataSeries);
   }
-  console.log("min:", minVal);
-  console.log("max:", maxVal);
-    //FIXME
 
   x.domain(d3.extent(allSeries[0], function(d) { return d.date; }));
   y.domain(d3.extent([minVal, maxVal]));
@@ -62,7 +63,9 @@ d3.json("firearms_discharge.json", function(error, data) {
   svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
+      .call(xAxis)
+      .append("text")
+      .text("Year");
 
   svg.append("g")
       .attr("class", "y axis")
@@ -78,7 +81,7 @@ d3.json("firearms_discharge.json", function(error, data) {
 
       svg.append("path")
         .datum(allSeries[i])
-        .attr("class", "line")
+        .attr("class", "line " + allSeries[i][0].series)
         .attr("d", line);
       }
 });
