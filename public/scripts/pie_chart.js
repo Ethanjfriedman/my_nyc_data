@@ -66,9 +66,24 @@ var makePieChart = function(dataset) {
       .data(pieCharts[0])
       .enter()
       .append("path")
+      .on('mouseover', function(d) {
+        d3.select(this).attr("opacity", .5);
+          var myText = $(this).attr('id');
+          var x = event.pageX - this.offsetLeft;
+          var y = event.pageY - this.offsetTop;
+          $('.blurb').css('visibility', 'visible').css('margin-left', x-50).css('margin-top', y-150).fadeIn('slow').text(myText);
+        })
+      .on('mouseout', function(d){
+        d3.select(this).attr("opacity", 1)
+          setTimeout(function(){
+            $('.blurb').fadeOut('slow');
+          },1500);
+          
+        })
       .attr("fill", function(d, i){ return color(i); })
       .attr("stroke", "white")
       .attr("stroke-width", "2px")
+      .attr('id', function(d, i){ console.log(data.data[i][8] + 'd8'); return data.data[i][8];})
       .each(function(d) {
         this._current = JSON.parse(JSON.stringify(d));
         this._current.endAngle = this._current.startAngle;

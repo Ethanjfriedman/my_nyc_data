@@ -22,18 +22,39 @@
 
     .line {
       fill: none;
-      stroke: steelblue;
+
       stroke-width: 1.5px;
     }
-
-    .line.AdversarialConflict {
+    .blurb{
+      visibility: hidden;
+      position: absolute;
+      background-color: black;
+      color:white;
+      padding:5px;
+    }
+/*    .line.AdversarialConflict {
       stroke: deeppink;
     }
-
+    .line.AnimalAttack {
+      stroke: blue;
+    }
+    .line.UnintentionalDischarge {
+      stroke: green;
+    }
+    .line.MistakenIdentity {
+      stroke: red;
+    }
+    .line.UnauthorizeduseofaFirearm {
+      stroke: purple;
+    }*/
+     text{
+      background:red;
+     }
     </style>
   </head>
   <body>
-
+<h1 id='title'></h1>
+<p class='blurb'></p>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="scripts/timeseries.js"></script>

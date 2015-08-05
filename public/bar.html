@@ -21,6 +21,13 @@
  .bars{
   transition:1s;
  }
+.blurb{
+      visibility: hidden;
+      position: absolute;
+      background-color: black;
+      color:white;
+      padding:5px;
+    }
 
  </style>
 </head>
@@ -28,7 +35,9 @@
 <body>
 <div id='buttons'>
 </div>
+<h1 id='title'></h1>
 <h3 id ='year'>2005</h3>
+<p class='blurb'></p>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script type="text/javascript">
@@ -50,14 +59,15 @@ var yAxis = d3.svg.axis()
   .scale(y)
   .orient("left")
   .ticks(10);
-
-
+//colors
+var color = d3.scale.category20();
 
 function makeBar(){
 
 
   d3.json("distribution.json", function(error, data) {
-
+  var $title = $('#title');
+  $title.text(data.meta.view.name);
     //getting rid of total and storing it in a variable;
     var total = data.data.pop();
     console.log(total[11] + 'total');
@@ -95,6 +105,22 @@ function makeBar(){
       .data(data.data)
       .enter()
       .append("rect")
+      .style('fill',function(d){ return color(d); })
+      .on('mouseover', function(d) {
+        d3.select(this)
+        .style('fill', 'black');
+        var myText = $(this).attr('id');
+          var x = event.pageX - this.offsetLeft;
+          var y = event.pageY - this.offsetTop;
+          $('.blurb').css('visibility', 'visible').css('margin-left', x-50).css('margin-top', y-150).fadeIn('slow').text(myText);
+      })
+      .on('mouseout', function(d){
+        d3.select(this)
+        .style('fill',function(d){ return color(d); });
+        setTimeout(function(){
+            $('.blurb').fadeOut('slow');
+          },1500);
+      })
       .attr("x", function(d) { return x(d[8]); })
       .attr("width", x.rangeBand())
       .attr("y", function(d) { return y(d[year]); })
@@ -102,11 +128,15 @@ function makeBar(){
       .transition().delay(function (d,i){ return i * 100;})
       .duration(300)
       .style('opacity', 1)
-      .style("fill", "blue")
       .attr("height", function(d) { return height - y(d[year]); })
       .attr('id', function(d){ return d[8]})
-      .attr('class', 'bars');
+      .attr('class', 'bars')
 
+      
+      ;
+
+      
+    
 
     svg.append("g")
       .attr("class", "x axis")
