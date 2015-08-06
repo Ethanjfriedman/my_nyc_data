@@ -46,6 +46,7 @@ var makePieChart = function(dataset) {
         //totals = [ [2005 totals], [2006 totals], ... [2009 totals]]
         pieCharts.push(chart);
       }
+      debugger;
     }
 
     createCharts();
